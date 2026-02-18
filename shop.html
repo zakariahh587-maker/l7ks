@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop All | L7K Officiel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .shop-page {
+            padding-top: 50px;
+        }
+
+        .shop-header {
+            margin-bottom: 50px;
+        }
+
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 50px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .filter-item {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .sort-by select {
+            border: none;
+            font-family: inherit;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .breadcrumb {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="announcement-bar">Free shipping on all orders over $150</div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="menu-toggle" id="mobile-menu"><i data-lucide="menu"></i></div>
+            <ul class="nav-links left">
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="index.html#collections">Collections</a></li>
+            </ul>
+            <div class="brand-logo"><a href="index.html">L7K<span>OFFICIEL</span></a></div>
+            <ul class="nav-links right">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li class="nav-icons">
+                    <a href="shop.html"><i data-lucide="search"></i></a>
+                    <a href="shop.html"><i data-lucide="shopping-bag"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="shop-page">
+        <section>
+            <div class="breadcrumb">Home / Shop All</div>
+            <div class="shop-header">
+                <h1>Shop All</h1>
+                <p>Curated streetwear for the modern original.</p>
+            </div>
+
+            <div class="filter-bar">
+                <div class="filters">
+                    <div class="filter-item">Category <i data-lucide="chevron-down" style="width: 14px;"></i></div>
+                    <div class="filter-item">Size <i data-lucide="chevron-down" style="width: 14px;"></i></div>
+                    <div class="filter-item">Color <i data-lucide="chevron-down" style="width: 14px;"></i></div>
+                </div>
+                <div class="sort-by">
+                    <select>
+                        <option>Featured</option>
+                        <option>Newest</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-grid" id="shop-grid">
+                <!-- Products will be loaded from products.js -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <!-- Copy footer from index.html -->
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">L7K<span>OFFICIEL</span></a>
+                <p>&copy; 2024 L7K OFFICIEL. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <h4>SHOP</h4>
+                <ul>
+                    <li><a href="#">Hoodies</a></li>
+                    <li><a href="#">Tees</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>STAY UPDATED</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Email address" required>
+                    <button type="submit">JOIN</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+    <script>setTimeout(() => lucide.createIcons(), 500);</script>
+</body>
+
+</html>

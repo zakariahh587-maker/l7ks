@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Oversized Hoodie | L7K Officiel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .product-detail-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            padding-top: 50px;
+        }
+
+        .product-gallery {
+            display: flex;
+            gap: 20px;
+        }
+
+        .gallery-thumbs {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100px;
+        }
+
+        .gallery-thumbs img {
+            width: 80px;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .gallery-thumbs img.active {
+            border-color: var(--primary-color);
+        }
+
+        .main-gallery-img {
+            flex: 1;
+            background: var(--bg-light);
+            cursor: zoom-in;
+            overflow: hidden;
+            height: 800px;
+        }
+
+        .main-gallery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .main-gallery-img:hover img {
+            transform: scale(1.1);
+        }
+
+        .product-specs {
+            padding: 20px 0;
+        }
+
+        .product-specs h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 2rem;
+        }
+
+        .option-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2.5rem;
+        }
+
+        .size-box {
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .size-box:hover,
+        .size-box.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        .qty-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            width: fit-content;
+            margin-bottom: 2rem;
+        }
+
+        .qty-btn {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .qty-input {
+            width: 50px;
+            text-align: center;
+            border: none;
+            outline: none;
+            font-family: inherit;
+            font-weight: 600;
+        }
+
+        .product-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-to-cart-btn:hover {
+            background: #333;
+        }
+
+        .product-description {
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+        }
+
+        .product-description h4 {
+            margin-bottom: 1rem;
+        }
+
+        .product-description p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .product-detail-container {
+                grid-template-columns: 1fr;
+            }
+
+            .main-gallery-img {
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="announcement-bar">Free shipping on all orders over $150</div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="menu-toggle" id="mobile-menu"><i data-lucide="menu"></i></div>
+            <ul class="nav-links left">
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="index.html#collections">Collections</a></li>
+            </ul>
+            <div class="brand-logo"><a href="index.html">L7K<span>OFFICIEL</span></a></div>
+            <ul class="nav-links right">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li class="nav-icons">
+                    <a href="shop.html"><i data-lucide="search"></i></a>
+                    <a href="shop.html"><i data-lucide="shopping-bag"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="product-detail-page">
+        <div class="product-detail-container section">
+            <div class="product-gallery">
+                <div class="gallery-thumbs" id="pd-thumbs">
+                    <!-- Dynamic thumbs -->
+                </div>
+                <div class="main-gallery-img" id="pd-main-img">
+                    <!-- Dynamic main image -->
+                </div>
+            </div>
+
+            <div class="product-specs">
+                <div class="breadcrumb" id="pd-breadcrumb">Shop / ...</div>
+                <h1 id="pd-name">Loading...</h1>
+                <p class="product-price" id="pd-price">$0.00</p>
+
+                <div class="options-group">
+                    <span class="option-label">Colors</span>
+                    <div class="color-options" id="pd-colors" style="display: flex; gap: 10px; margin-bottom: 2rem;">
+                        <!-- Dynamic colors -->
+                    </div>
+
+                    <span class="option-label">Select Size</span>
+                    <div class="size-options" id="pd-sizes">
+                        <!-- Dynamic sizes -->
+                    </div>
+                </div>
+
+                <span class="option-label">Quantity</span>
+                <div class="qty-selector">
+                    <div class="qty-btn"
+                        onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value)-1)">
+                        -</div>
+                    <input type="text" value="1" class="qty-input">
+                    <div class="qty-btn"
+                        onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value)+1">+
+                    </div>
+                </div>
+
+                <div class="product-actions">
+                    <button class="add-to-cart-btn" onclick="showNotification('Added to cart')">ADD TO CART</button>
+                    <button class="btn btn-outline-dark" style="width: 100%;">BUY IT NOW</button>
+                </div>
+
+                <div class="product-description">
+                    <h4>DETAILS</h4>
+                    <p id="pd-desc">Product description goes here.</p>
+                    <p id="pd-details">
+                        <!-- Dynamic details list -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <!-- Reusable footer -->
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">L7K<span>OFFICIEL</span></a>
+                <p>&copy; 2024 L7K OFFICIEL.</p>
+            </div>
+            <div class="footer-links">
+                <h4>SUPPORT</h4>
+                <ul>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>STAY UPDATED</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Email address">
+                    <button type="submit">JOIN</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+    <script>setTimeout(() => lucide.createIcons(), 500);</script>
+</body>
+
+</html>

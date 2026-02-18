@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L7K Admin | Cloud Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --admin-bg: #f4f6f8;
+            --admin-sidebar: #000;
+        }
+
+        body {
+            background-color: var(--admin-bg);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: var(--admin-sidebar);
+            color: #fff;
+            padding: 2rem;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 3rem;
+        }
+
+        .admin-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .product-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            gap: 20px;
+        }
+
+        .product-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .product-meta {
+            flex: 1;
+        }
+
+        .btn-add {
+            background: #000;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            width: 500px;
+            padding: 2.5rem;
+            border-radius: 16px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .upload-area {
+            border: 2px dashed #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .img-preview {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .img-preview img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .status-online {
+            background: #e6fffa;
+            color: #0694a2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2 style="font-family: 'Outfit';">L7K CLOUD</h2>
+    </div>
+
+    <div class="main-content">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <div>
+                <h1>Store Products</h1>
+                <div id="connection-pill" class="status-pill status-online">
+                    <div style="width: 8px; height: 8px; background: currentColor; border-radius: 50%;"></div>
+                    <span>READY</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="openModal()"><i data-lucide="plus"></i> Add New Product</button>
+        </div>
+        <div class="admin-card" id="product-list">
+            <p style="text-align: center; color: #666;">Loading products...</p>
+        </div>
+    </div>
+
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <h2 style="font-family: 'Outfit'; margin-bottom: 1.5rem;">Product Details</h2>
+            <form id="productForm">
+                <div class="form-group"><label>Name</label><input type="text" id="name" required></div>
+                <div class="form-group" style="display:flex; gap:15px;">
+                    <div style="flex:1;"><label>Price ($)</label><input type="number" id="price" step="0.01" required>
+                    </div>
+                    <div style="flex:1;"><label>Category</label><select id="category">
+                            <option>Hoodies</option>
+                            <option>Tees</option>
+                            <option>Bottoms</option>
+                            <option>Accessories</option>
+                        </select></div>
+                </div>
+                <div class="form-group">
+                    <label>Images</label>
+                    <div class="upload-area" onclick="document.getElementById('fileInput').click()">Click to upload
+                    </div>
+                    <input type="file" id="fileInput" multiple hidden accept="image/*">
+                    <div class="img-preview" id="imgPreview"></div>
+                </div>
+                <div class="form-group"><label>Description</label><textarea id="description" rows="3"></textarea></div>
+                <div style="display: flex; gap: 10px;">
+                    <button type="button" class="btn" style="flex:1; background:#eee;"
+                        onclick="closeModal()">Cancel</button>
+                    <button type="submit" id="saveBtn" class="btn" style="flex:2; background:#000; color:#fff;">Save to
+                        Cloud</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { db, storage } from './js/firebase-config.js';
+        import { ref, push, get, remove, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { ref as sRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+
+        let products = [];
+        let uploadFiles = [];
+
+        async function init() {
+            try {
+                const snapshot = await get(ref(db, 'products'));
+                if (snapshot.exists()) {
+                    const data = snapshot.val();
+                    products = Object.keys(data).map(key => ({ id: key, ...data[key] }));
+                } else { products = []; }
+                render();
+            } catch (e) { console.error(e); }
+            lucide.createIcons();
+        }
+
+        function render() {
+            const list = document.getElementById('product-list');
+            if (products.length === 0) { list.innerHTML = '<p style="text-align: center;">No products.</p>'; return; }
+            list.innerHTML = products.map(p => `
+                <div class="product-item">
+                    <img src="${(p.images && p.images[0]) || 'https://via.placeholder.com/60'}" alt="">
+                    <div class="product-meta"><h4>${p.name}</h4><p>$${parseFloat(p.price).toFixed(2)}</p></div>
+                    <button onclick="window.confirmDelete('${p.id}')" style="background:none; border:none; color:#ff4444; cursor:pointer;"><i data-lucide="trash-2"></i></button>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        document.getElementById('fileInput').onchange = (e) => {
+            uploadFiles = [...uploadFiles, ...Array.from(e.target.files)];
+            document.getElementById('imgPreview').innerHTML = uploadFiles.map(f => `<img src="${URL.createObjectURL(f)}">`).join('');
+        };
+
+        document.getElementById('productForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('saveBtn');
+            btn.innerText = "SAVING..."; btn.disabled = true;
+            try {
+                const imageUrls = [];
+                for (const file of uploadFiles) {
+                    const snapshot = await uploadBytes(sRef(storage, `products/${Date.now()}-${file.name}`), file);
+                    imageUrls.push(await getDownloadURL(snapshot.ref));
+                }
+                await push(ref(db, 'products'), {
+                    name: document.getElementById('name').value,
+                    price: parseFloat(document.getElementById('price').value),
+                    category: document.getElementById('category').value,
+                    description: document.getElementById('description').value,
+                    images: imageUrls,
+                    featured: true,
+                    sizes: ["S", "M", "L", "XL"]
+                });
+                location.reload();
+            } catch (err) { alert("Error! Check console."); console.error(err); btn.disabled = false; }
+        };
+
+        window.confirmDelete = async (id) => { if (confirm("Delete product?")) { await remove(ref(db, `products/${id}`)); location.reload(); } };
+        window.openModal = () => document.getElementById('productModal').style.display = 'flex';
+        window.closeModal = () => document.getElementById('productModal').style.display = 'none';
+        init();
+    </script>
+</body>
+
+</html>

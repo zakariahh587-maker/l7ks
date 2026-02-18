@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L7K Officiel | Premium Urban Streetwear</title>
+    <meta name="description"
+        content="Premium Urban Streetwear – Made for Originals. Discover the latest collections of hoodies, tees, and accessories from L7K Officiel.">
+    <!-- Google Fonts: Outfit for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        Free shipping on all orders over $150
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="menu-toggle" id="mobile-menu">
+                <i data-lucide="menu"></i>
+            </div>
+
+            <ul class="nav-links left">
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#collections">Collections</a></li>
+            </ul>
+
+            <div class="brand-logo">
+                <a href="index.html">L7K<span>OFFICIEL</span></a>
+            </div>
+
+            <ul class="nav-links right">
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="nav-icons">
+                    <a href="shop.html"><i data-lucide="search"></i></a>
+                    <a href="shop.html"><i data-lucide="shopping-bag"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <img src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?auto=format&fit=crop&q=80&w=1920"
+                alt="L7K Hero" class="hero-img">
+            <div class="hero-content">
+                <h1 class="fade-in">PREMIUM URBAN STREETWEAR</h1>
+                <p class="fade-in">MADE FOR ORIGINALS</p>
+                <div class="hero-btns fade-in">
+                    <a href="shop.html" class="btn btn-primary">SHOP NOW</a>
+                    <a href="#collections" class="btn btn-outline">COLLECTIONS</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Collections -->
+        <section id="collections" class="collections">
+            <div class="section-header">
+                <h2>FEATURED COLLECTIONS</h2>
+                <div class="line"></div>
+            </div>
+            <div class="collection-grid">
+                <div class="collection-item" onclick="window.location.href='shop.html'">
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=800"
+                        alt="Hoodies">
+                    <div class="collection-info">
+                        <h3>HOODIES</h3>
+                        <a href="shop.html" class="view-all">EXPLORE</a>
+                    </div>
+                </div>
+                <div class="collection-item" onclick="window.location.href='shop.html'">
+                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&q=80&w=800"
+                        alt="Tees">
+                    <div class="collection-info">
+                        <h3>TEES</h3>
+                        <a href="shop.html" class="view-all">EXPLORE</a>
+                    </div>
+                </div>
+                <div class="collection-item" onclick="window.location.href='shop.html'">
+                    <img src="https://images.unsplash.com/photo-1576566582414-b633006a88e9?auto=format&fit=crop&q=80&w=800"
+                        alt="Accessories">
+                    <div class="collection-info">
+                        <h3>ACCESSORIES</h3>
+                        <a href="shop.html" class="view-all">EXPLORE</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Brand Preview -->
+        <section id="about" class="about-brand">
+            <div class="about-container">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=1000"
+                        alt="About L7K">
+                </div>
+                <div class="about-content">
+                    <span class="subtitle">EST. 2024</span>
+                    <h2>CRAFTED FOR THE BOLD</h2>
+                    <p>L7K Officiel is more than a brand; it's a movement. Inspired by the raw energy of urban streets
+                        and the precision of high-end fashion, we create pieces that speak for themselves. Authenticity,
+                        quality, and confidence are woven into every thread.</p>
+                    <a href="#" class="btn btn-dark">OUR STORY</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Grid (Shop Preview) -->
+        <section id="shop" class="products">
+            <div class="section-header">
+                <h2>NEW ARRIVALS</h2>
+                <p>Latest drops for the season</p>
+            </div>
+            <div class="product-grid" id="featured-grid">
+                <!-- Products will be loaded from products.js -->
+            </div>
+            <div class="shop-cta">
+                <a href="shop.html" class="btn btn-outline-dark">VIEW ALL PRODUCTS</a>
+            </div>
+        </section>
+
+        <!-- Instagram Feed -->
+        <section class="instagram-feed">
+            <div class="section-header">
+                <h2>FOLLOW US @L7K_OFFICIEL</h2>
+                <p>Tag us to get featured</p>
+            </div>
+            <div class="insta-grid">
+                <div class="insta-item"><img
+                        src="https://images.unsplash.com/photo-1529139570274-7f841802c119?auto=format&fit=crop&q=80&w=600"
+                        alt="L7K Style"></div>
+                <div class="insta-item"><img
+                        src="https://images.unsplash.com/photo-1534405923038-990993f444bc?auto=format&fit=crop&q=80&w=600"
+                        alt="L7K Style"></div>
+                <div class="insta-item"><img
+                        src="https://images.unsplash.com/photo-1526170315870-ef68e2fd335a?auto=format&fit=crop&q=80&w=600"
+                        alt="L7K Style"></div>
+                <div class="insta-item"><img
+                        src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=600"
+                        alt="L7K Style"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">L7K<span>OFFICIEL</span></a>
+                <p>Redefining urban style through quality and minimalism.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>SHOP</h4>
+                <ul>
+                    <li><a href="shop.html">Hoodies</a></li>
+                    <li><a href="shop.html">Tees</a></li>
+                    <li><a href="shop.html">Accessories</a></li>
+                    <li><a href="shop.html">New Arrivals</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>SUPPORT</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>STAY UPDATED</h4>
+                <p>Join our newsletter for exclusive drops and news.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Email address" required>
+                    <button type="submit">JOIN</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 L7K OFFICIEL. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="js/main.js"></script>
+    <script>
+        // Lucide is global, we can keep it here
+        setTimeout(() => lucide.createIcons(), 500); 
+    </script>
+</body>
+
+</html>
