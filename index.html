@@ -1,212 +1,277 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L7K Officiel | Premium Urban Streetwear</title>
-    <meta name="description"
-        content="Premium Urban Streetwear – Made for Originals. Discover the latest collections of hoodies, tees, and accessories from L7K Officiel.">
-    <!-- Google Fonts: Outfit for headings, Inter for body -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L7K OFFICEL</title>
+    <!-- FONTS -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@700;800;900&display=swap"
-        rel="stylesheet">
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Lucide Icons -->
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Outfit:wght@900&family=Bangers&display=swap"
+      rel="stylesheet"
+    />
+    <!-- ICONS -->
     <script src="https://unpkg.com/lucide@latest"></script>
-</head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
-    <!-- Announcement Bar -->
-    <div class="announcement-bar">
-        Free shipping on all orders over $150
-    </div>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="menu-toggle" id="mobile-menu">
-                <i data-lucide="menu"></i>
-            </div>
-
-            <ul class="nav-links left">
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="#collections">Collections</a></li>
-            </ul>
-
-            <div class="brand-logo">
-                <a href="index.html">L7K<span>OFFICIEL</span></a>
-            </div>
-
-            <ul class="nav-links right">
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li class="nav-icons">
-                    <a href="shop.html"><i data-lucide="search"></i></a>
-                    <a href="shop.html"><i data-lucide="shopping-bag"></i></a>
-                </li>
-            </ul>
+  <body>
+    <!-- NAV -->
+    <nav class="nav-standard">
+      <div class="nav-inner">
+        <div class="brand-logo">
+          <a href="index.html" style="display: flex; align-items: center">
+            <img
+              id="nav-logo"
+              src="assets/logo.png"
+              alt="L7K"
+              style="height: 60px; width: auto; display: block"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'block';
+              "
+            />
+            <span style="display: none">L7K<span>OFFICEL</span></span>
+          </a>
         </div>
+        <div class="nav-links">
+          <a href="shop.html">COLLECTION</a>
+          <a href="shop.html?category=Hoodies">HOODIES</a>
+          <a href="#" onclick="window.toggleCart()"
+            ><i data-lucide="shopping-bag"></i
+          ></a>
+        </div>
+      </div>
     </nav>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-overlay"></div>
-            <img src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?auto=format&fit=crop&q=80&w=1920"
-                alt="L7K Hero" class="hero-img">
-            <div class="hero-content">
-                <h1 class="fade-in">PREMIUM URBAN STREETWEAR</h1>
-                <p class="fade-in">MADE FOR ORIGINALS</p>
-                <div class="hero-btns fade-in">
-                    <a href="shop.html" class="btn btn-primary">SHOP NOW</a>
-                    <a href="#collections" class="btn btn-outline">COLLECTIONS</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Collections -->
-        <section id="collections" class="collections">
-            <div class="section-header">
-                <h2>FEATURED COLLECTIONS</h2>
-                <div class="line"></div>
-            </div>
-            <div class="collection-grid">
-                <div class="collection-item" onclick="window.location.href='shop.html'">
-                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=800"
-                        alt="Hoodies">
-                    <div class="collection-info">
-                        <h3>HOODIES</h3>
-                        <a href="shop.html" class="view-all">EXPLORE</a>
-                    </div>
-                </div>
-                <div class="collection-item" onclick="window.location.href='shop.html'">
-                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&q=80&w=800"
-                        alt="Tees">
-                    <div class="collection-info">
-                        <h3>TEES</h3>
-                        <a href="shop.html" class="view-all">EXPLORE</a>
-                    </div>
-                </div>
-                <div class="collection-item" onclick="window.location.href='shop.html'">
-                    <img src="https://images.unsplash.com/photo-1576566582414-b633006a88e9?auto=format&fit=crop&q=80&w=800"
-                        alt="Accessories">
-                    <div class="collection-info">
-                        <h3>ACCESSORIES</h3>
-                        <a href="shop.html" class="view-all">EXPLORE</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Brand Preview -->
-        <section id="about" class="about-brand">
-            <div class="about-container">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=1000"
-                        alt="About L7K">
-                </div>
-                <div class="about-content">
-                    <span class="subtitle">EST. 2024</span>
-                    <h2>CRAFTED FOR THE BOLD</h2>
-                    <p>L7K Officiel is more than a brand; it's a movement. Inspired by the raw energy of urban streets
-                        and the precision of high-end fashion, we create pieces that speak for themselves. Authenticity,
-                        quality, and confidence are woven into every thread.</p>
-                    <a href="#" class="btn btn-dark">OUR STORY</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Product Grid (Shop Preview) -->
-        <section id="shop" class="products">
-            <div class="section-header">
-                <h2>NEW ARRIVALS</h2>
-                <p>Latest drops for the season</p>
-            </div>
-            <div class="product-grid" id="featured-grid">
-                <!-- Products will be loaded from products.js -->
-            </div>
-            <div class="shop-cta">
-                <a href="shop.html" class="btn btn-outline-dark">VIEW ALL PRODUCTS</a>
-            </div>
-        </section>
-
-        <!-- Instagram Feed -->
-        <section class="instagram-feed">
-            <div class="section-header">
-                <h2>FOLLOW US @L7K_OFFICIEL</h2>
-                <p>Tag us to get featured</p>
-            </div>
-            <div class="insta-grid">
-                <div class="insta-item"><img
-                        src="https://images.unsplash.com/photo-1529139570274-7f841802c119?auto=format&fit=crop&q=80&w=600"
-                        alt="L7K Style"></div>
-                <div class="insta-item"><img
-                        src="https://images.unsplash.com/photo-1534405923038-990993f444bc?auto=format&fit=crop&q=80&w=600"
-                        alt="L7K Style"></div>
-                <div class="insta-item"><img
-                        src="https://images.unsplash.com/photo-1526170315870-ef68e2fd335a?auto=format&fit=crop&q=80&w=600"
-                        alt="L7K Style"></div>
-                <div class="insta-item"><img
-                        src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=600"
-                        alt="L7K Style"></div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <a href="#" class="footer-logo">L7K<span>OFFICIEL</span></a>
-                <p>Redefining urban style through quality and minimalism.</p>
-                <div class="social-links">
-                    <a href="#"><i data-lucide="instagram"></i></a>
-                    <a href="#"><i data-lucide="twitter"></i></a>
-                    <a href="#"><i data-lucide="facebook"></i></a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <h4>SHOP</h4>
-                <ul>
-                    <li><a href="shop.html">Hoodies</a></li>
-                    <li><a href="shop.html">Tees</a></li>
-                    <li><a href="shop.html">Accessories</a></li>
-                    <li><a href="shop.html">New Arrivals</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>SUPPORT</h4>
-                <ul>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Shipping Policy</a></li>
-                    <li><a href="#">Returns & Exchanges</a></li>
-                    <li><a href="#">Size Guide</a></li>
-                </ul>
-            </div>
-            <div class="footer-newsletter">
-                <h4>STAY UPDATED</h4>
-                <p>Join our newsletter for exclusive drops and news.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Email address" required>
-                    <button type="submit">JOIN</button>
-                </form>
-            </div>
+    <!-- HERO -->
+    <header class="hero-minimal">
+      <div class="hero-box">
+        <h1
+          style="
+            font-family: &quot;Bangers&quot;, cursive;
+            font-size: clamp(5rem, 20vw, 15rem);
+            color: #fff;
+            line-height: 0.8;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+          "
+        >
+          URBAN ROOTS
+        </h1>
+        <p
+          style="
+            letter-spacing: 15px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-top: 20px;
+          "
+        >
+          CASABLANCA UNDERGROUND
+        </p>
+        <div style="margin-top: 50px">
+          <a href="shop.html" class="btn-main">EXPLORE DROP</a>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 L7K OFFICIEL. All rights reserved.</p>
+      </div>
+    </header>
+
+    <!-- DROP -->
+    <section style="padding: 100px 0">
+      <div class="container">
+        <div
+          style="
+            margin-bottom: 60px;
+            border-left: 5px solid #ffffff;
+            padding-left: 20px;
+          "
+        >
+          <h2 style="font-size: 3rem">LATEST DROPS</h2>
         </div>
+
+        <div class="product-grid" id="featured-grid">
+          <!-- CLOUD DATA -->
+          <div style="grid-column: 1/-1; text-align: center; padding: 100px">
+            <p style="color: #444; font-weight: 900">LOADING CATALOG...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-logo-group">
+          <img src="assets/logo.png" alt="L7K LOGO" style="height: 60px" />
+          <a
+            href="https://www.instagram.com/l7k_officiel?igsh=MXZ0MmlxZWIzeThpYQ=="
+            target="_blank"
+            class="social-icon"
+          >
+            <i data-lucide="instagram"></i>
+          </a>
+          <a
+            href="https://www.tiktok.com/@l7k_officiel?_r=1&_t=ZS-942Um8hP9fR"
+            target="_blank"
+            class="social-icon"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="-4 -4 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47-1.26-.88-2.26-2.13-2.73-3.61-.03 2.14-.02 4.28-.02 6.43-.02 2.38-.13 4.79-.8 7.07-.63 2.27-2.02 4.41-4.04 5.61-2.02 1.2-4.52 1.52-6.75 1.05-2.24-.46-4.32-1.92-5.46-3.88-1.15-1.95-1.44-4.29-1.02-6.51.44-2.26 1.86-4.33 3.84-5.46 1.99-1.14 4.49-1.39 6.64-.78v4.4c-1.18-.39-2.52-.3-3.62.26-.64.33-1.17.85-1.5 1.5-.32.65-.4 1.41-.23 2.12.18.7.6 1.33 1.16 1.76.57.43 1.26.65 1.98.63.74-.01 1.47-.26 2.04-.73.57-.47.96-1.12 1.09-1.85.12-.66.07-1.35.07-2.01V0h-.07z"
+                fill="#25F4EE"
+                style="
+                  mix-blend-mode: screen;
+                  transform: translate(-0.5px, 0.5px);
+                "
+              />
+              <path
+                d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47-1.26-.88-2.26-2.13-2.73-3.61-.03 2.14-.02 4.28-.02 6.43-.02 2.38-.13 4.79-.8 7.07-.63 2.27-2.02 4.41-4.04 5.61-2.02 1.2-4.52 1.52-6.75 1.05-2.24-.46-4.32-1.92-5.46-3.88-1.15-1.95-1.44-4.29-1.02-6.51.44-2.26 1.86-4.33 3.84-5.46 1.99-1.14 4.49-1.39 6.64-.78v4.4c-1.18-.39-2.52-.3-3.62.26-.64.33-1.17.85-1.5 1.5-.32.65-.4 1.41-.23 2.12.18.7.6 1.33 1.16 1.76.57.43 1.26.65 1.98.63.74-.01 1.47-.26 2.04-.73.57-.47.96-1.12 1.09-1.85.12-.66.07-1.35.07-2.01V0h-.07z"
+                fill="#FE2C55"
+                style="
+                  mix-blend-mode: screen;
+                  transform: translate(0.5px, -0.5px);
+                "
+              />
+              <path
+                d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47-1.26-.88-2.26-2.13-2.73-3.61-.03 2.14-.02 4.28-.02 6.43-.02 2.38-.13 4.79-.8 7.07-.63 2.27-2.02 4.41-4.04 5.61-2.02 1.2-4.52 1.52-6.75 1.05-2.24-.46-4.32-1.92-5.46-3.88-1.15-1.95-1.44-4.29-1.02-6.51.44-2.26 1.86-4.33 3.84-5.46 1.99-1.14 4.49-1.39 6.64-.78v4.4c-1.18-.39-2.52-.3-3.62.26-.64.33-1.17.85-1.5 1.5-.32.65-.4 1.41-.23 2.12.18.7.6 1.33 1.16 1.76.57.43 1.26.65 1.98.63.74-.01 1.47-.26 2.04-.73.57-.47.96-1.12 1.09-1.85.12-.66.07-1.35.07-2.01V0h-.07z"
+                fill="white"
+                style="mix-blend-mode: screen"
+              />
+            </svg>
+          </a>
+        </div>
+        <div class="footer-copy">© 2026 L7K OFFICEL. NO COMPROMISE.</div>
+      </div>
     </footer>
 
-    <!-- Scripts -->
-    <script type="module" src="js/main.js"></script>
-    <script>
-        // Lucide is global, we can keep it here
-        setTimeout(() => lucide.createIcons(), 500); 
-    </script>
-</body>
+    <!-- CART PANEL (Restored High-End Version) -->
+    <div id="cartOverlay" class="cart-overlay">
+      <div class="cart-panel">
+        <div class="cart-header">
+          <h2>VOTRE PANIER / YOUR CART</h2>
+          <div class="cart-close" onclick="window.toggleCart()">&times;</div>
+        </div>
 
+        <div id="cartItems" class="cart-items">
+          <!-- Items inject here -->
+        </div>
+
+        <div class="cart-summary">
+          <div class="summary-row">
+            <span>Sous-total / Subtotal</span>
+            <span id="cartSubtotal">Dh 0.00 MAD</span>
+          </div>
+          <div class="summary-row">
+            <span>Expédition / Shipping</span>
+            <span id="cartShipping">Dh 0.00 MAD</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span id="cartTotal">Dh 0.00 MAD</span>
+          </div>
+        </div>
+
+        <div class="shipping-options">
+          <h3 class="shipping-title">Options d'expédition</h3>
+          <div class="shipping-card">
+            <div
+              class="shipping-option active"
+              onclick="window.setShipping(30, this)"
+            >
+              <div class="shipping-radio"></div>
+              <div class="shipping-label">
+                Extérieure Casablanca | خارج الدار البيضاء
+              </div>
+              <div class="shipping-price">Dh 30.00 MAD</div>
+            </div>
+            <div class="shipping-option" onclick="window.setShipping(25, this)">
+              <div class="shipping-radio"></div>
+              <div class="shipping-label">CASABLANCA | الدار البيضاء</div>
+              <div class="shipping-price">Dh 25.00 MAD</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkout-form">
+          <h3 class="shipping-title" style="margin-left: 30px">
+            Détails de facturation
+          </h3>
+          <div class="form-group" style="padding: 0 30px">
+            <div class="form-label">
+              Nom complet / الاسم الكامل <span>*</span>
+            </div>
+            <div class="input-with-icon">
+              <div class="input-icon"><i data-lucide="user"></i></div>
+              <input
+                type="text"
+                id="orderName"
+                placeholder="Votre nom"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group" style="padding: 0 30px">
+            <div class="form-label">Téléphone / الهاتف <span>*</span></div>
+            <div class="input-with-icon">
+              <div class="input-icon"><i data-lucide="phone"></i></div>
+              <input
+                type="tel"
+                id="orderPhone"
+                placeholder="06XXXXXXXX"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group" style="padding: 0 30px">
+            <div class="form-label">Ville / المدينة <span>*</span></div>
+            <div class="input-with-icon">
+              <div class="input-icon"><i data-lucide="map-pin"></i></div>
+              <input
+                type="text"
+                id="orderCity"
+                placeholder="Ex: Casablanca"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group" style="padding: 0 30px">
+            <div class="form-label">Adresse / العنوان <span>*</span></div>
+            <div class="input-with-icon">
+              <div class="input-icon"><i data-lucide="home"></i></div>
+              <input
+                type="text"
+                id="orderAddress"
+                placeholder="Quartier, Rue, N°"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="buy-wrapper">
+          <button
+            id="checkoutBtn"
+            class="btn-checkout"
+            onclick="window.processOrder()"
+          >
+            ACHETER MAINTENANT - Dh 0.00 MAD
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.40.0/dist/umd/supabase.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      setTimeout(() => {
+        if (typeof lucide !== "undefined") lucide.createIcons();
+      }, 500);
+    </script>
+  </body>
 </html>

@@ -4,282 +4,605 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L7K Admin | Cloud Manager</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;900&display=swap"
+    <title>L7K ADMIN | SYSTEM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Outfit:wght@900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --admin-bg: #f4f6f8;
-            --admin-sidebar: #000;
+            --bg: #000;
+            --card: #080808;
+            --border: #151515;
+            --accent: #fff;
+            --red: #ff3b3b;
         }
 
         body {
-            background-color: var(--admin-bg);
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: #fff;
+            margin: 0;
+            padding: 0;
             display: flex;
             min-height: 100vh;
         }
 
+        /* Sidebar */
         .sidebar {
-            width: 280px;
-            background: var(--admin-sidebar);
-            color: #fff;
-            padding: 2rem;
+            width: 250px;
+            background: #050505;
+            border-right: 1px solid var(--border);
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             position: fixed;
             height: 100vh;
         }
 
-        .main-content {
-            flex: 1;
-            margin-left: 280px;
-            padding: 3rem;
-        }
-
-        .admin-card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
-        }
-
-        .product-item {
+        .nav-btn {
+            background: none;
+            border: 1px solid transparent;
+            color: #555;
+            padding: 15px;
+            text-align: left;
+            cursor: pointer;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
-            padding: 1rem;
-            border-bottom: 1px solid #eee;
+            gap: 12px;
+            transition: 0.3s;
+        }
+
+        .nav-btn.active {
+            color: #fff;
+            background: #0a0a0a;
+            border-color: var(--border);
+        }
+
+        .nav-btn:hover {
+            color: #fff;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 60px;
+            flex-grow: 1;
+        }
+
+        h1 {
+            font-family: 'Outfit';
+            font-size: 2.5rem;
+            letter-spacing: -2px;
+            margin: 0 0 40px;
+            text-transform: uppercase;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Products Grid */
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
         }
 
-        .product-item img {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
+        .admin-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 15px;
             border-radius: 4px;
         }
 
-        .product-meta {
-            flex: 1;
+        .admin-card img {
+            width: 100%;
+            aspect-ratio: 1/1.2;
+            object-fit: cover;
+            border-radius: 2px;
+            margin-bottom: 15px;
         }
 
-        .btn-add {
-            background: #000;
+        .admin-card h3 {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .admin-card p {
+            color: #555;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        /* Forms */
+        .admin-form {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 40px;
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-size: 0.7rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #555;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            background: #0a0a0a;
+            border: 1px solid var(--border);
+            padding: 15px;
             color: #fff;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 2rem;
+            font-family: inherit;
+            outline: none;
         }
 
-        .modal {
-            display: none;
-            position: fixed;
+        input:focus {
+            border-color: var(--accent);
+        }
+
+        .submit-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-weight: 950;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        /* Drag & Drop */
+        .drop-zone {
+            width: 100%;
+            height: 200px;
+            border: 2px dashed var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            background: #050505;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drop-zone:hover,
+        .drop-zone.active {
+            border-color: var(--accent);
+            background: #0a0a0a;
+        }
+
+        .drop-zone img {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
+            object-fit: contain;
+            display: none;
+            z-index: 1;
         }
 
-        .modal-content {
-            background: #fff;
-            width: 500px;
-            padding: 2.5rem;
-            border-radius: 16px;
-            max-height: 90vh;
-            overflow-y: auto;
+        .drop-zone span {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: #555;
+            text-transform: uppercase;
+            z-index: 2;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .drop-zone i {
+            color: #555;
+            z-index: 2;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
+        /* Order Table */
+        table {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            border-collapse: collapse;
+            background: var(--card);
+            border: 1px solid var(--border);
         }
 
-        .upload-area {
-            border: 2px dashed #ddd;
+        th {
+            text-align: left;
             padding: 20px;
-            text-align: center;
-            border-radius: 8px;
+            background: #050505;
+            font-size: 0.7rem;
+            color: #444;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+        }
+
+        .badge {
+            padding: 5px 10px;
+            font-size: 0.6rem;
+            font-weight: 900;
+            border-radius: 2px;
+            text-transform: uppercase;
+        }
+
+        .badge-pending {
+            background: #111;
+            color: #555;
+        }
+
+        .badge-shipped {
+            background: #fff;
+            color: #000;
+        }
+
+        .action-flex {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .icon-btn {
+            background: #0a0a0a;
+            border: 1px solid var(--border);
+            color: #555;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
         }
 
-        .img-preview {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-            flex-wrap: wrap;
+        .icon-btn:hover {
+            border-color: #fff;
+            color: #fff;
         }
 
-        .img-preview img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .status-online {
-            background: #e6fffa;
-            color: #0694a2;
+        .icon-btn.red:hover {
+            color: var(--red);
+            border-color: var(--red);
         }
     </style>
 </head>
 
 <body>
     <div class="sidebar">
-        <h2 style="font-family: 'Outfit';">L7K CLOUD</h2>
+        <h2 style="font-family:'Outfit'; margin-bottom: 30px; letter-spacing:-1px;">L7K SYSTEM</h2>
+        <button class="nav-btn active" onclick="showSection('orders')">
+            <i data-lucide="shopping-cart"></i> Commandes
+        </button>
+        <button class="nav-btn" onclick="showSection('inventory')">
+            <i data-lucide="package"></i> Inventaire
+        </button>
+        <button class="nav-btn" onclick="showSection('add-product')">
+            <i data-lucide="plus-circle"></i> Ajouter Produit
+        </button>
     </div>
 
     <div class="main-content">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-            <div>
-                <h1>Store Products</h1>
-                <div id="connection-pill" class="status-pill status-online">
-                    <div style="width: 8px; height: 8px; background: currentColor; border-radius: 50%;"></div>
-                    <span>READY</span>
-                </div>
-            </div>
-            <button class="btn-add" onclick="openModal()"><i data-lucide="plus"></i> Add New Product</button>
+        <!-- ORDERS SECTION -->
+        <div id="orders" class="section active">
+            <h1>GESTION COMMANDES</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>CLIENT</th>
+                        <th>ARTICLES</th>
+                        <th>TOTAL</th>
+                        <th>STATUT</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersBody">
+                    <tr>
+                        <td colspan="5" style="text-align:center; padding:50px; color:#222;">Chargement...</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="admin-card" id="product-list">
-            <p style="text-align: center; color: #666;">Loading products...</p>
-        </div>
-    </div>
 
-    <div class="modal" id="productModal">
-        <div class="modal-content">
-            <h2 style="font-family: 'Outfit'; margin-bottom: 1.5rem;">Product Details</h2>
-            <form id="productForm">
-                <div class="form-group"><label>Name</label><input type="text" id="name" required></div>
-                <div class="form-group" style="display:flex; gap:15px;">
-                    <div style="flex:1;"><label>Price ($)</label><input type="number" id="price" step="0.01" required>
-                    </div>
-                    <div style="flex:1;"><label>Category</label><select id="category">
-                            <option>Hoodies</option>
-                            <option>Tees</option>
-                            <option>Bottoms</option>
-                            <option>Accessories</option>
-                        </select></div>
+        <!-- INVENTORY SECTION -->
+        <div id="inventory" class="section">
+            <h1>INVENTAIRE PRODUITS</h1>
+            <div class="admin-grid" id="inventoryGrid">
+                <!-- Products list -->
+            </div>
+        </div>
+
+        <!-- ADD PRODUCT SECTION -->
+        <div id="add-product" class="section">
+            <h1>NOUVEAU PRODUIT</h1>
+            <form id="productForm" class="admin-form" onsubmit="handleProductSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label">Nom du Produit</label>
+                    <input type="text" id="p-name" required>
                 </div>
                 <div class="form-group">
-                    <label>Images</label>
-                    <div class="upload-area" onclick="document.getElementById('fileInput').click()">Click to upload
+                    <label class="form-label">Prix (MAD)</label>
+                    <input type="number" id="p-price" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea id="p-desc" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Photo du Produit (Drop or Click)</label>
+                    <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                        <i data-lucide="image-plus" id="dropIcon"></i>
+                        <span id="dropText">Glissez une image ici ou cliquez</span>
+                        <img id="previewImg" src="" alt="Preview">
                     </div>
-                    <input type="file" id="fileInput" multiple hidden accept="image/*">
-                    <div class="img-preview" id="imgPreview"></div>
+                    <input type="file" id="fileInput" hidden accept="image/*">
                 </div>
-                <div class="form-group"><label>Description</label><textarea id="description" rows="3"></textarea></div>
-                <div style="display: flex; gap: 10px;">
-                    <button type="button" class="btn" style="flex:1; background:#eee;"
-                        onclick="closeModal()">Cancel</button>
-                    <button type="submit" id="saveBtn" class="btn" style="flex:2; background:#000; color:#fff;">Save to
-                        Cloud</button>
+                <div class="form-group">
+                    <label class="form-label">OU URL Image (Direct Link)</label>
+                    <input type="url" id="p-img" placeholder="https://...">
                 </div>
+                <div class="form-group">
+                    <label class="form-label">Tailles (Séparées par virgules)</label>
+                    <input type="text" id="p-sizes" value="S, M, L, XL, XXL">
+                </div>
+                <button type="submit" class="submit-btn">PUBLIER LE DROP</button>
             </form>
         </div>
     </div>
 
-    <script type="module">
-        import { db, storage } from './js/firebase-config.js';
-        import { ref, push, get, remove, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-        import { ref as sRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.40.0/dist/umd/supabase.js"></script>
+    <script>
+        const SUPABASE_URL = 'https://exqmtppdpupkesbqrfic.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_sJIZxFReSHq31in0eSATXw_4l8a0oZZ';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        let products = [];
-        let uploadFiles = [];
-
-        async function init() {
-            try {
-                const snapshot = await get(ref(db, 'products'));
-                if (snapshot.exists()) {
-                    const data = snapshot.val();
-                    products = Object.keys(data).map(key => ({ id: key, ...data[key] }));
-                } else { products = []; }
-                render();
-            } catch (e) { console.error(e); }
-            lucide.createIcons();
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            event.currentTarget.classList.add('active');
         }
 
-        function render() {
-            const list = document.getElementById('product-list');
-            if (products.length === 0) { list.innerHTML = '<p style="text-align: center;">No products.</p>'; return; }
-            list.innerHTML = products.map(p => `
-                <div class="product-item">
-                    <img src="${(p.images && p.images[0]) || 'https://via.placeholder.com/60'}" alt="">
-                    <div class="product-meta"><h4>${p.name}</h4><p>$${parseFloat(p.price).toFixed(2)}</p></div>
-                    <button onclick="window.confirmDelete('${p.id}')" style="background:none; border:none; color:#ff4444; cursor:pointer;"><i data-lucide="trash-2"></i></button>
-                </div>
-            `).join('');
-            lucide.createIcons();
-        }
-
-        document.getElementById('fileInput').onchange = (e) => {
-            uploadFiles = [...uploadFiles, ...Array.from(e.target.files)];
-            document.getElementById('imgPreview').innerHTML = uploadFiles.map(f => `<img src="${URL.createObjectURL(f)}">`).join('');
-        };
-
-        document.getElementById('productForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const btn = document.getElementById('saveBtn');
-            btn.innerText = "SAVING..."; btn.disabled = true;
+        async function fetchOrders() {
+            const body = document.getElementById('ordersBody');
             try {
-                const imageUrls = [];
-                for (const file of uploadFiles) {
-                    const snapshot = await uploadBytes(sRef(storage, `products/${Date.now()}-${file.name}`), file);
-                    imageUrls.push(await getDownloadURL(snapshot.ref));
+                const { data, error } = await supabase.from('orders').select('*').order('created_at', { ascending: false });
+                if (error) throw error;
+
+                if (!data || data.length === 0) {
+                    body.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:50px; color:#555;">Aucune commande trouvée.</td></tr>';
+                    return;
                 }
-                await push(ref(db, 'products'), {
-                    name: document.getElementById('name').value,
-                    price: parseFloat(document.getElementById('price').value),
-                    category: document.getElementById('category').value,
-                    description: document.getElementById('description').value,
-                    images: imageUrls,
-                    featured: true,
-                    sizes: ["S", "M", "L", "XL"]
-                });
-                location.reload();
-            } catch (err) { alert("Error! Check console."); console.error(err); btn.disabled = false; }
-        };
 
-        window.confirmDelete = async (id) => { if (confirm("Delete product?")) { await remove(ref(db, `products/${id}`)); location.reload(); } };
-        window.openModal = () => document.getElementById('productModal').style.display = 'flex';
-        window.closeModal = () => document.getElementById('productModal').style.display = 'none';
-        init();
+                body.innerHTML = data.map(o => `
+                    <tr>
+                        <td>
+                            <div style="font-weight: 900; color: #fff; font-size: 0.9rem;">${o.customer_name || 'N/A'}</div>
+                            <div style="color: #555; font-size: 0.75rem; margin-top: 4px;">
+                                <i data-lucide="phone" style="width:10px; height:10px; vertical-align:middle;"></i> ${o.customer_phone || 'N/A'}<br>
+                                <i data-lucide="map-pin" style="width:10px; height:10px; vertical-align:middle;"></i> ${o.customer_city || 'N/A'}<br>
+                                <i data-lucide="home" style="width:10px; height:10px; vertical-align:middle;"></i> ${o.customer_address || 'N/A'}
+                            </div>
+                        </td>
+                        <td>
+                            <div style="display:flex; flex-direction:column; gap:4px;">
+                                ${(o.items || []).map(i => `
+                                    <div style="background: #111; padding: 4px 8px; border-radius: 2px;">
+                                        <span style="color: #fff; font-weight: 800;">${i.qty}x</span> ${i.name} 
+                                        <span style="color: #555; font-weight: 900; margin-left: 5px;">[${i.size || 'N/A'}]</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </td>
+                        <td><b style="color: #fff;">Dh ${parseFloat(o.total || 0).toFixed(2)}</b></td>
+                        <td><span class="badge ${o.status === 'pending' ? 'badge-pending' : 'badge-shipped'}">${o.status}</span></td>
+                        <td>
+                            <div style="display:flex; gap:5px;">
+                                <button class="icon-btn ${o.status === 'shipped' ? 'active' : ''}" onclick="updateOrderStatus(${o.id}, 'shipped')" title="Marquer comme expédié">
+                                    <i data-lucide="check"></i>
+                                </button>
+                                <button class="icon-btn red" onclick="deleteOrder(${o.id})" title="Supprimer la commande">
+                                    <i data-lucide="trash-2"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+                lucide.createIcons();
+            } catch (err) {
+                console.error("Fetch error:", err);
+                body.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:50px; color:var(--red);">Erreur lors du chargement des commandes.</td></tr>';
+            }
+        }
+
+        async function fetchInventory() {
+            const grid = document.getElementById('inventoryGrid');
+            try {
+                const { data, error } = await supabase.from('products').select('*').order('created_at', { ascending: false });
+                if (error) throw error;
+
+                if (!data || data.length === 0) {
+                    grid.innerHTML = '<p style="padding:40px; color:#555;">L\'inventaire est vide.</p>';
+                    return;
+                }
+
+                grid.innerHTML = data.map(p => `
+                    <div class="admin-card">
+                        <img src="${p.images?.[0] || 'https://via.placeholder.com/300'}" alt="">
+                        <h3>${p.name}</h3>
+                        <p>Dh ${parseFloat(p.price || 0).toFixed(2)}</p>
+                        <div class="action-flex">
+                            <button class="icon-btn red" onclick="deleteProduct(${p.id})"><i data-lucide="trash-2"></i></button>
+                        </div>
+                    </div>
+                `).join('');
+                lucide.createIcons();
+            } catch (err) {
+                console.error("Inventory error:", err);
+                grid.innerHTML = '<p style="padding:40px; color:var(--red);">Erreur lors du chargement de l\'inventaire.</p>';
+            }
+        }
+
+        async function handleProductSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+
+            try {
+                const fileInput = document.getElementById('fileInput');
+                const urlInput = document.getElementById('p-img');
+
+                let imageUrl = urlInput.value;
+                if (fileInput.files && fileInput.files[0]) {
+                    imageUrl = await toBase64(fileInput.files[0]);
+                }
+
+                if (!imageUrl) {
+                    alert('Veuillez ajouter une photo ou un lien URL.');
+                    return;
+                }
+
+                btn.innerText = 'PUBLICATION...';
+                btn.disabled = true;
+
+                const product = {
+                    name: document.getElementById('p-name').value,
+                    price: parseFloat(document.getElementById('p-price').value),
+                    description: document.getElementById('p-desc').value,
+                    images: [imageUrl],
+                    sizes: document.getElementById('p-sizes').value.split(',').map(s => s.trim())
+                };
+
+                const { error } = await supabase.from('products').insert([product]);
+                if (error) throw error;
+
+                alert('Produit ajouté!');
+                location.reload();
+            } catch (err) {
+                console.error("Submit error:", err);
+                alert('Erreur lors de la publication.');
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        const toBase64 = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+
+        // Drop Zone Logic
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const previewImg = document.getElementById('previewImg');
+        const dropText = document.getElementById('dropText');
+        const dropIcon = document.getElementById('dropIcon');
+
+        ['dragover', 'dragleave', 'drop'].forEach(evt => {
+            dropZone.addEventListener(evt, e => {
+                e.preventDefault();
+                dropZone.classList.toggle('active', evt === 'dragover');
+            });
+        });
+
+        dropZone.addEventListener('drop', e => {
+            fileInput.files = e.dataTransfer.files;
+            handlePreview(fileInput.files[0]);
+        });
+
+        fileInput.addEventListener('change', () => {
+            handlePreview(fileInput.files[0]);
+        });
+
+        function handlePreview(file) {
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    previewImg.src = e.target.result;
+                    previewImg.style.display = 'block';
+                    dropText.style.display = 'none';
+                    dropIcon.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        async function updateOrderStatus(id, status) {
+            try {
+                const { error } = await supabase.from('orders').update({ status }).eq('id', id);
+                if (error) throw error;
+                await fetchOrders(); // Re-render table
+            } catch (err) {
+                console.error("Update error:", err);
+                alert("Erreur lors de la mise à jour du statut.");
+            }
+        }
+
+        async function deleteOrder(id) {
+            if (confirm('Supprimer cette commande définitivement?')) {
+                try {
+                    const { error } = await supabase.from('orders').delete().eq('id', id);
+                    if (error) throw error;
+                    await fetchOrders(); // Re-render table immediately
+                } catch (err) {
+                    console.error("Delete error:", err);
+                    alert("Erreur lors de la suppression.");
+                }
+            }
+        }
+
+        async function deleteProduct(id) {
+            if (confirm('Supprimer ce produit de l\'inventaire?')) {
+                try {
+                    const { error } = await supabase.from('products').delete().eq('id', id);
+                    if (error) throw error;
+                    await fetchInventory(); // Re-render grid immediately
+                } catch (err) {
+                    console.error("Delete product error:", err);
+                    alert("Erreur lors de la suppression du produit.");
+                }
+            }
+        }
+
+        // Initial Load
+        fetchOrders();
+        fetchInventory();
+        setTimeout(() => lucide.createIcons(), 500);
     </script>
 </body>
 
